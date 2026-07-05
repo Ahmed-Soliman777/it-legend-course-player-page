@@ -12,7 +12,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <header className='header-container'>
+    <header className='header-container page-container'>
       <ul className='page-list'>
         <li>home</li>
         <FaChevronRight 

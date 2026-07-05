@@ -13,6 +13,10 @@ import { useEffect, useRef, useState } from 'react'
 
 import { FaRegCirclePlay } from "react-icons/fa6";
 
+import { TbTheater } from "react-icons/tb";
+
+import { MdOutlineFeaturedVideo } from "react-icons/md";
+
 
 
 const VideoPlayer = () => {
@@ -31,7 +35,6 @@ const VideoPlayer = () => {
     const [overlay, setOverlay] = useState<boolean>(true)
 
     const [windowWidth, setWindowWidth] = useState(0);
-
 
     // handle widow resizing
 
@@ -68,48 +71,100 @@ const VideoPlayer = () => {
     }
 
     return (
-        <div className='video-player-container'>
-
-            <video
-                src="/file_example.mp4"
-                className={`${isTheatre ? 'theatre-video' : ''}`}
-                ref={videoRef}
-                controls={isPlaying}
-            />
-
-            {/* show toggle btn in large screen */}
-
+        <div className="page-container">
+            <h1>Starting SEO as your Home</h1>
             {
-                windowWidth > 768 &&
+                // sticky video in small screens
+                windowWidth < 850 ?
+                    (
+                        <div className="sm-video-player-container">
+                            <div className='video-player-container'>
+                                <video
+                                    src="/file_example.mp4"
+                                    className={`${isTheatre ? 'theatre-video' : ''}`}
+                                    ref={videoRef}
+                                    controls={isPlaying}
+                                    style={{ height: `${windowWidth * 0.5}px` }}
+                                />
 
-                (<button
-                    onClick={toggleVideo}
-                >
-                    {
-                        isTheatre ? 'video' : 'theatre'
-                    }
-                </button>)
-            }
+                                {/* show overlay when page is rendered */}
 
-            {/* show overlay when page is rendered */}
-
-            {overlay
-                &&
-                (
-                    <div className="video-overlay">
-                        <button
-                            className="video-overlay-btn"
-                            onClick={playVideo}
+                                {overlay
+                                    &&
+                                    (
+                                        <div className="video-overlay">
+                                            <button
+                                                className="video-overlay-btn"
+                                                onClick={playVideo}
+                                            >
+                                                <FaRegCirclePlay
+                                                    color='#fff'
+                                                    size={windowWidth > 768 ? 100 : 50}
+                                                />
+                                            </button>
+                                        </div>
+                                    )}
+                            </div>
+                        </div>
+                    )
+                    :
+                    (
+                        // normal video with theatre option for large screen
+                        <div
+                            className='video-player-container'
+                            style={{ width: `${isTheatre ? '100%' : '50%'}` }}
                         >
-                            <FaRegCirclePlay
-                                color='#fff'
-                                size={windowWidth > 768 ? 100 : 50}
+                            <video
+                                src="/file_example.mp4"
+                                className={`${isTheatre ? 'theatre-video' : 'video-lg'} `}
+                                ref={videoRef}
+                                controls={isPlaying}
+                                style={{ height: `${!isTheatre && windowWidth * 0.25}px` }}
                             />
-                        </button>
-                    </div>
-                )
+
+                            {/* show toggle btn in large screen */}
+
+                            {
+                                !overlay && (
+                                    <button
+                                        onClick={
+                                            toggleVideo
+                                        }
+                                    >
+                                        {
+                                            isTheatre ? <>
+                                                <MdOutlineFeaturedVideo /> normal view
+                                            </> :
+                                                <>
+                                                    <TbTheater /> theatre view
+                                                </>
+                                        }
+                                    </button>
+                                )
+                            }
+
+
+                            {/* show overlay when page is rendered */}
+
+                            {overlay
+                                &&
+                                (
+                                    <div className="video-overlay">
+                                        <button
+                                            className="video-overlay-btn"
+                                            onClick={playVideo}
+                                        >
+                                            <FaRegCirclePlay
+                                                color='#fff'
+                                                size={windowWidth > 768 ? 100 : 50}
+                                            />
+                                        </button>
+                                    </div>
+                                )}
+                        </div>
+                    )
             }
-        </div>
+        </div >
     )
 }
 

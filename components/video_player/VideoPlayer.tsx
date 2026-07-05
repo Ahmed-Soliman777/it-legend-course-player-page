@@ -16,6 +16,7 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import { TbTheater } from "react-icons/tb";
 
 import { MdOutlineFeaturedVideo } from "react-icons/md";
+import CurriculumIcon from '../curriculum_icon/CurriculumIcon';
 
 
 
@@ -164,7 +165,12 @@ const VideoPlayer = () => {
                         </div>
                     )
             }
-        </div >
+
+            {/* curriculum icon component */}
+
+            <CurriculumIcon />
+
+        </div>
     )
 }
 

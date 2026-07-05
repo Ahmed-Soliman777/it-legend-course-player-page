@@ -1,1 +1,45 @@
 /* video player component style file */
+
+.video-player-container {
+  position: relative;
+  margin: 20px 0;
+}
+
+.theatre-video {
+  width: 100%;
+  height: 500px;
+}
+
+video {
+  background: #000;
+  width: 100%;
+  height: 162px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000a4;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-overlay-btn {
+  background: transparent;
+  border: none;
+}

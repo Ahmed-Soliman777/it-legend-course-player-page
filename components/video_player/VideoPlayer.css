@@ -7,7 +7,7 @@
 
 .theatre-video {
   width: 100%;
-  height: 500px;
+  height: 550px;
 }
 
 video {
@@ -34,12 +34,47 @@ video {
   height: 100%;
   background: #000000a4;
   border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 
 .video-overlay-btn {
   background: transparent;
   border: none;
+  bottom: 0;
+  right: 0;
+}
+
+/* video style for small screen */
+
+.sm-video-player-container {
+  position: sticky;
+  top: 10px;
+}
+
+/* video style for large screen */
+
+.video-lg {
+  background: #000;
+  height: 162px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.video-player-container button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: none;
+  font-size: 15px;
 }

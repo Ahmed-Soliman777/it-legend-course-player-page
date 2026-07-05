@@ -4,7 +4,7 @@
 
 .page-list {
   padding: 0;
-  margin: 0;
+  margin: 10px 0 0 0;
   display: flex;
   gap: 7px;
   list-style-type: none;

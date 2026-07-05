@@ -1,0 +1,17 @@
+/* curriculum icon component style css */
+
+.curriculum-icon {
+  color: var(--secondary-text-color);
+  padding: 8px 10px;
+  border: var(--secondary-text-color) 1px solid;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  display: inline-block;
+}
+
+.curriculum-icon:nth-child(even){
+    margin: 0 5px;
+}

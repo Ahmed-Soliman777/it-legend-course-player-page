@@ -15,17 +15,19 @@ const Header = () => {
     <header className='header-container page-container'>
       <ul className='page-list'>
         <li>home</li>
-        <FaChevronRight 
+        <FaChevronRight
           color='#515151'
           size={12}
         />
         <li>courses</li>
-        <FaChevronRight 
+        <FaChevronRight
           color='#515151'
           size={12}
         />
         <li>course details</li>
       </ul>
+
+      <h1>Starting SEO as your Home</h1>
     </header>
   )
 }

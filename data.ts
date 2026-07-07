@@ -5,6 +5,8 @@
 
 import { CommentsType } from "./types";
 
+// comment data
+
 export const CommmentsData: CommentsType[] = [
   {
     image: "./profile.jpg",
@@ -20,4 +22,15 @@ export const CommmentsData: CommentsType[] = [
     comment:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolor expedita eligendi quae? Minus, iste delectus vero quidem aliquam, qui, harum hic tempore velit labore iusto dolore laborum ex quis eligendi iure consequatur eius esse eveniet facere possimus. Facilis dolorum iusto odio tenetur consequatur quos ab praesentium, quo ipsa eius!",
   },
+];
+
+// leaderboard data
+
+export const LeaderboardData: object[] = [
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
 ];

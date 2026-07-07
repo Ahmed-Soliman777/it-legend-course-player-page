@@ -1,0 +1,40 @@
+.it_player_video {
+  max-width: 100%;
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.smallTopics {
+  display: none;
+}
+
+.largeTopics {
+  display: block;
+  width: 30%;
+  flex-shrink: 0;
+}
+
+.sm_course_materials {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .it_player_video {
+    display: block;
+  }
+
+  .largeTopics {
+    display: none;
+  }
+
+  .smallTopics {
+    display: block;
+    margin-top: 24px;
+  }
+}

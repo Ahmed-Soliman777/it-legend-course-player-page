@@ -2,6 +2,10 @@
     header component styles
 */
 
+.header-container{
+  background-color: #0000000b;
+}
+
 .page-list {
   padding: 0;
   margin: 10px 0 0 0;

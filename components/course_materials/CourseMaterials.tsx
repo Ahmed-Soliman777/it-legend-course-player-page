@@ -19,44 +19,87 @@ const CourseMaterials = () => {
   return (
     <div className="container">
       <h1>Course Materials</h1>
-      <ul className="course-material-list">
-        <li className='course-item'>
-          <h3>
-            <FaRegClock />&nbsp;
-            Duration:
-          </h3>
-          <span>
-            8 weeks
-          </span>
-        </li>
-        <li className='course-item'>
-          <h3>
-            <ImBooks />&nbsp;
-            Lessons:
-          </h3>
-          <span>
-            8
-          </span>
-        </li>
-        <li className='course-item'>
-          <h3>
-            <PiStudentFill />&nbsp;
-            Enrolled:
-          </h3>
-          <span>
-            65 Students
-          </span>
-        </li>
-        <li className='course-item'>
-          <h3>
-            <FaGlobeAfrica />&nbsp;
-            Language
-          </h3>
-          <span>
-            English
-          </span>
-        </li>
-      </ul>
+
+      <div className="material-list-contiainer">
+        <ul className="course-material-list">
+          <li className='course-item'>
+            <h3>
+              <FaRegClock />&nbsp;
+              Duration:
+            </h3>
+            <span>
+              8 weeks
+            </span>
+          </li>
+          <li className='course-item'>
+            <h3>
+              <ImBooks />&nbsp;
+              Lessons:
+            </h3>
+            <span>
+              8
+            </span>
+          </li>
+          <li className='course-item'>
+            <h3>
+              <PiStudentFill />&nbsp;
+              Enrolled:
+            </h3>
+            <span>
+              65 Students
+            </span>
+          </li>
+          <li className='course-item'>
+            <h3>
+              <FaGlobeAfrica />&nbsp;
+              Language
+            </h3>
+            <span>
+              English
+            </span>
+          </li>
+        </ul>
+
+        <ul className="lg-course-material-list">
+          <li className='course-item'>
+            <h3>
+              <FaRegClock />&nbsp;
+              Duration:
+            </h3>
+            <span>
+              8 weeks
+            </span>
+          </li>
+          <li className='course-item'>
+            <h3>
+              <ImBooks />&nbsp;
+              Lessons:
+            </h3>
+            <span>
+              8
+            </span>
+          </li>
+          <li className='course-item'>
+            <h3>
+              <PiStudentFill />&nbsp;
+              Enrolled:
+            </h3>
+            <span>
+              65 Students
+            </span>
+          </li>
+          <li className='course-item'>
+            <h3>
+              <FaGlobeAfrica />&nbsp;
+              Language
+            </h3>
+            <span>
+              English
+            </span>
+          </li>
+        </ul>
+      </div>
+
     </div>
   )
 }

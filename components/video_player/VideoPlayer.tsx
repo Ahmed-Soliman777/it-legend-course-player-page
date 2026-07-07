@@ -73,7 +73,6 @@ const VideoPlayer = () => {
 
     return (
         <div className="page-container">
-            <h1>Starting SEO as your Home</h1>
             {
                 // sticky video in small screens
                 windowWidth < 850 ?

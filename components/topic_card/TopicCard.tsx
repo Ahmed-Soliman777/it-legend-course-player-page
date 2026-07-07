@@ -8,7 +8,7 @@
 
 import './TopicCard.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CourseTopicsProps } from '@/types';
 
@@ -26,6 +26,27 @@ const TopicCard = ({
 
 
     const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
+
+
+    useEffect(() => {
+        function handleCollapse() {
+            if (window.innerWidth > 1024) {
+                setIsCollapsed(false);
+            } else {
+                setIsCollapsed(true);
+            }
+        };
+
+
+        handleCollapse();
+
+        window.addEventListener('resize', handleCollapse);
+
+        return () => {
+            window.removeEventListener('resize', handleCollapse);
+        };
+    }, []);
+
 
 
     function handleCollapseBtn() {

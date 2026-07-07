@@ -113,7 +113,7 @@ const VideoPlayer = () => {
                         // normal video with theatre option for large screen
                         <div
                             className='video-player-container'
-                            style={{ width: `${isTheatre ? '100%' : '50%'}` }}
+                            style={{ width: `${isTheatre ? '100%' : '70%'}` }}
                         >
                             <video
                                 src="/file_example.mp4"

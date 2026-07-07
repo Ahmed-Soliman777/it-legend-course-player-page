@@ -1,1 +1,10 @@
 /* course topics component style file */
+.course-topic-container {
+  margin-top: 25px;
+}
+
+@media (max-width: 1024px) {
+  .course-topic-container {
+    margin-top: 10px;
+  }
+}

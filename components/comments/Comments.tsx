@@ -65,7 +65,6 @@ const Comments = () => {
                     name="comment-area"
                     id="comment-text-area"
                     placeholder='write a comment'
-                    style={{ width: `${windowWidth - 90}px` }}
                 />
                 <button
                     className='add-commment-btn

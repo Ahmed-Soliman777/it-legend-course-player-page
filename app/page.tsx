@@ -15,30 +15,35 @@ import styles from './page.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.it_player_video}>
-      <div className={styles.mainContent}>
-        {/* player page header component*/}
-        <Header />
+    <>
+      {/* player page header component*/}
 
-        {/* vide player component*/}
-        <VideoPlayer />
+      <Header />
 
-        {/* course material component */}
-        <CourseMaterials />
+      <div className={styles.it_player_video}>
+        <div className={styles.mainContent}>
+
+          {/* vide player component*/}
+          <VideoPlayer />
+
+          {/* course material component */}
+          <CourseMaterials />
 
 
-        {/* course topics component */}
-        <div className={styles.smallTopics}>
-          <CourseTopics />
+          {/* course topics component */}
+          <div className={styles.smallTopics}>
+            <CourseTopics />
+          </div>
+
+          {/* comments component */}
+          <Comments />
         </div>
 
-        {/* comments component */}
-        <Comments />
+        <aside className={styles.largeTopics}>
+          <CourseTopics />
+        </aside>
       </div>
+    </>
 
-      <aside className={styles.largeTopics}>
-        <CourseTopics />
-      </aside>
-    </div>
   );
 }

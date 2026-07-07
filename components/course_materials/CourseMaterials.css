@@ -1,37 +1,50 @@
 /* course materials component style */
 
-
-.container{
+.container {
   padding: 10px 25px;
 }
 
-.course-material-list{
-    margin: 0;
-    padding: 5px 15px;
-    list-style-type: none;
-    border: 1px #51515135 solid;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px #00000010;
+.course-material-list {
+  margin: 0;
+  padding: 8px 16px;
+  list-style-type: none;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px #0f172a0a;
+  background: var(--secondary-bg-color);
 }
 
-.course-material-list > :not(:last-child){
-    border-bottom: 1px #51515129 solid;
+.course-material-list > :not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
 }
 
-.course-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  gap: 12px;
 }
 
+.course-item h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
 
 @media (max-width: 768px) {
   .container {
     padding: 10px 15px;
   }
 
-  .course-material-list{
-    padding: 0px 10px 0 7px;
+  .course-material-list {
+    padding: 0 10px;
+  }
+
+  .course-item {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

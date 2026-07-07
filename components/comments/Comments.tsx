@@ -39,12 +39,13 @@ const Comments = () => {
     return (
         <section className='comment-section'>
 
+            {/* comment data */}
 
             {CommmentsData.map((comment, i) => (
                 <div className="comment-container container" key={i}>
                     
                     <div className="image-container">
-                        <Image src='/profile.jpg/profile.jpg' alt={comment.name} width={100} height={100} />
+                        <Image src='/profile.jpg' alt={comment.name} width={100} height={100} />
                     </div>
 
                     <span>
@@ -54,6 +55,9 @@ const Comments = () => {
                     </span>
                 </div>
             ))}
+
+
+            {/* comment input */}
 
             <form
                 className="comment-input-container container">

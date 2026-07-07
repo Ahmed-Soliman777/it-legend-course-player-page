@@ -6,14 +6,15 @@
   padding: 0;
   margin: 10px 0 0 0;
   display: flex;
-  gap: 7px;
+  gap: 8px;
   list-style-type: none;
   text-transform: capitalize;
   color: var(--secondary-text-color);
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .page-list :nth-child(5) {
   color: var(--main-text-color);
-  font-weight: bold;
+  font-weight: 700;
 }

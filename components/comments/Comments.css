@@ -57,13 +57,17 @@
 
 .add-commment-btn {
     border: none;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-radius: 9px;
+    background: #008b09;
     padding: 10px 16px;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
     width: fit-content;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
 }
 
 @media (max-width: 640px) {

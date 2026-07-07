@@ -6,12 +6,20 @@
 import './CourseTopics.css'
 
 import TopicCard from '../topic_card/TopicCard';
-import './CourseTopics.css';
 
 const CourseTopics = () => {
     return (
         <section className="course-topic-container">
             <h2>Topics For This Course</h2>
+
+            <div className="progress-section">
+                <div className="progress-label-row">
+                    <div className="progress-track">
+                        <div className="progress-fill" style={{ width: '67%' }} />
+                    </div>
+                </div>
+
+            </div>
 
             <TopicCard
                 data={[

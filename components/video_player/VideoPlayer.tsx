@@ -112,14 +112,14 @@ const VideoPlayer = () => {
                         // normal video with theatre option for large screen
                         <div
                             className='video-player-container'
-                            style={{ width: `${isTheatre ? '100%' : '70%'}` }}
+                            style={{ width: '100%' }}
                         >
                             <video
                                 src="/file_example.mp4"
                                 className={`${isTheatre ? 'theatre-video' : 'video-lg'} `}
                                 ref={videoRef}
                                 controls={isPlaying}
-                                style={{ height: `${!isTheatre && windowWidth * 0.25}px` }}
+                                style={{ height: `500px` }}
                             />
 
                             {/* show toggle btn in large screen */}

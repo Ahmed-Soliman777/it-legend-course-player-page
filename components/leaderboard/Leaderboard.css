@@ -1,0 +1,103 @@
+/* leaderboard component style file */
+
+.leaderboard-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leaderboard-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: #0000003a;
+}
+
+.leaderboard-card {
+    position: relative;
+    z-index: 1;
+    width: min(92vw, 480px);
+    background: var(--secondary-bg-color);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 12px 30px #0000003a;
+}
+
+.leaderboard-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.leaderboard-header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.leaderboard-course-name {
+    margin-bottom: 4px;
+    color: var(--secondary-text-color);
+    font-size: 16px;
+}
+
+.leaderboard-title {
+    font-size: 22px;
+}
+
+.encourage {
+    padding: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    border-radius: 15px;
+    background: #0000000d;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.encourage-icon {
+    margin: 0;
+    font-size: 48px;
+
+}
+
+.encourage p {
+    margin: 0;
+    text-align: right;
+    color: #13134d;
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #0000000d;
+    border-radius: 15px;
+    padding: 10px;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+}
+
+.leaderboard-item {
+    width: 100%;
+}
+
+.leaderboard-username {
+    width: 100%;
+    min-height: 60px;
+    background: var(--secondary-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}

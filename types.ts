@@ -63,3 +63,11 @@ export type Question = {
   question: string;
   options: string[];
 };
+
+// active exam types type
+
+export type ActiveExamType = {
+  title: string;
+  duration: number;
+  examKey: string;
+};

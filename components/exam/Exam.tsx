@@ -28,6 +28,9 @@ import { questions } from '@/data';
 
 const Exam = ({ duration, examKey, onClose }: ExamProps) => {
 
+
+
+
   function readStoredExam(defaultDuration: number) {
 
     if (typeof window === 'undefined') {
@@ -57,6 +60,10 @@ const Exam = ({ duration, examKey, onClose }: ExamProps) => {
     }
   };
 
+
+
+
+
   const storedExam = readStoredExam(duration);
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(storedExam?.currentQuestionIndex || 0);
@@ -64,6 +71,9 @@ const Exam = ({ duration, examKey, onClose }: ExamProps) => {
   const [answers, setAnswers] = useState<Record<number, string>>(storedExam?.answers || {});
 
   const [remainingTime, setRemainingTime] = useState<number>(storedExam?.remainingTime || duration * 60);
+
+
+
 
 
   useEffect(() => {
@@ -100,6 +110,12 @@ const Exam = ({ duration, examKey, onClose }: ExamProps) => {
     return () => window.clearInterval(timerId);
   }, [remainingTime]);
 
+
+
+
+
+
+
   const currentQuestion = questions[currentQuestionIndex];
 
   function handleAnswerSelect(value: string) {
@@ -113,6 +129,9 @@ const Exam = ({ duration, examKey, onClose }: ExamProps) => {
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   }
+
+
+  
 
   return (
     <div className='exam-overlay'>

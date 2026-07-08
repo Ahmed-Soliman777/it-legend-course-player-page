@@ -1,1 +1,85 @@
-/* exam card style file */
+.exam-card-shell {
+    width: 100%;
+}
+
+.exam-card {
+    /* width: 100%; */
+    min-height: 320px;
+    background: var(--secondary-bg-color);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: inset 0 1px 0 #ffffff66;
+    color: #0f172a;
+    animation: examCardSlide 0.25s ease;
+}
+
+.exam-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.exam-card-badge {
+    background: #ffffffbf;
+    color: #1d4ed8;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.exam-card-description {
+    color: #0f172a;
+    opacity: 0.85;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.exam-question {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--secondary-bg-color);
+    box-shadow: 0 4px 14px #0f172a14;
+}
+
+.option-item input {
+    accent-color: #2563eb;
+}
+
+@media (min-width: 1024px) {
+    .option-item {
+        width: 60%;
+    }
+}
+
+@keyframes examCardSlide {
+    from {
+        opacity: 0;
+        transform: translateX(16px);
+}
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+}
+}

@@ -10,11 +10,13 @@ import './TopicCard.css';
 
 import { useEffect, useState } from 'react';
 
-import { CourseTopicsProps } from '@/types';
+import { ActiveExamType, CourseTopic, CourseTopicsProps } from '@/types';
 
 import { FaLock } from "react-icons/fa";
 
 import { FaSheetPlastic } from "react-icons/fa6";
+
+import Exam from '../exam/Exam';
 
 const TopicCard = ({
     title,
@@ -26,6 +28,7 @@ const TopicCard = ({
 
 
     const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
+    const [activeExam, setActiveExam] = useState<ActiveExamType | null>(null)
 
 
     useEffect(() => {
@@ -53,72 +56,101 @@ const TopicCard = ({
         setIsCollapsed(e => !e)
     }
 
+    function handleExam(topic: CourseTopic, index: number) {
+        setActiveExam({
+            title: topic.topic,
+            duration: topic.duration || 10,
+            examKey: `exam-${index + 1}-${Math.random}`
+        })
+    }
+
+    function closeExam() {
+        setActiveExam(null)
+    }
 
     return (
-        <div className="card-container">
+        <>
 
-            {/* displays at sm screen */}
-            <div className="sm-title">
-                <h3>{title}</h3>
-                {/* collapse btn */}
-                <button
-                    onClick={handleCollapseBtn}
+            {
+                activeExam
+                &&
+                <Exam
+                    duration={activeExam.duration}
+                    examKey={activeExam.examKey}
+                    onClose={closeExam}
+                />
+            }
+
+
+
+            <div className="card-container">
+                {/* displays at sm screen */}
+                <div className="sm-title">
+                    <h3>{title}</h3>
+                    {/* collapse btn */}
+                    <button
+                        onClick={handleCollapseBtn}
+                    >
+                        {isCollapsed ? '+' : '-'}
+                    </button>
+                </div>
+
+
+                {/* displays at lg screen */}
+                <div className="lg-title">
+                    <h3>{duration}</h3>
+                    <p>{description}</p>
+                </div>
+
+
+                {/* course data */}
+
+                <ul
+                    className={`course-data-list ${isCollapsed ? 'collapsed' : 'expanded'}`}
                 >
-                    {isCollapsed ? '+' : '-'}
-                </button>
+                    {
+                        data.map((topic, i) => (
+                            <li
+                                key={i}
+                            >
+                                <span className="topic-label">
+                                    <FaSheetPlastic />
+                                    {topic.topic}
+                                </span>
+                                {
+                                    i !== 2 ?
+                                        (
+                                            <>
+
+                                                <FaLock />
+                                            </>
+                                        )
+                                        :
+                                        (
+                                            <div
+                                                className='quest'
+                                                onClick={() => handleExam(topic, i)}
+                                            >
+                                                <span className="quest_count">
+                                                    {topic.questions_no} QUESTIONS
+                                                </span>
+
+                                                <span className="quest_duration">
+                                                    {topic.duration} MINUTES
+                                                </span>
+                                            </div>
+                                        )
+
+                                }
+                            </li>
+                        ))
+                    }
+                </ul>
+
+
             </div>
+        </>
 
-
-            {/* displays at lg screen */}
-            <div className="lg-title">
-                <h3>{duration}</h3>
-                <p>{description}</p>
-            </div>
-
-
-            {/* course data */}
-
-            <ul
-                className={`course-data-list ${isCollapsed ? 'collapsed' : 'expanded'}`}
-            >
-                {
-                    data.map((topic, i) => (
-                        <li
-                            key={i}
-                        >
-                            <span className="topic-label">
-                                <FaSheetPlastic />
-                                {topic.topic}
-                            </span>
-                            {
-                                i !== 2 ?
-                                    (
-                                        <>
-
-                                            <FaLock />
-                                        </>
-                                    )
-                                    :
-                                    (
-                                        <div className='quest'>
-                                            <span className="quest_count">
-                                                {topic.questions_no} QUESTIONS
-                                            </span>
-
-                                            <span className="quest_duration">
-                                                {topic.duration} MINUTES
-                                            </span>
-                                        </div>
-                                    )
-
-                            }
-                        </li>
-                    ))
-                }
-            </ul>
-
-
-        </div>
     )
 }
 

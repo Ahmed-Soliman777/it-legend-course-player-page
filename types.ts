@@ -2,9 +2,6 @@
 
 // course materials component type
 
-
-
-
 export interface CommentsType {
   image: string;
   name: string;
@@ -36,4 +33,33 @@ export type CourseTopicsProps = {
   duration: string;
   description: string;
   data: CourseTopic[];
+};
+
+// exam card component props type
+
+export type ExamCardProps = {
+  question: {
+    id: number;
+    question: string;
+    options: string[];
+  };
+  questionIndex: number;
+  selectedValue?: string;
+  onAnswerSelect: (value: string) => void;
+};
+
+// exam props types
+
+export type ExamProps = {
+  duration: number;
+  examKey: string;
+  onClose: () => void;
+};
+
+// question type
+
+export type Question = {
+  id: number;
+  question: string;
+  options: string[];
 };

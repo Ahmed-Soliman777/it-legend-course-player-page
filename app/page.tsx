@@ -23,7 +23,7 @@ export default function Home() {
       <div className={styles.it_player_video}>
         <div className={styles.mainContent}>
 
-          {/* vide player component*/}
+          {/* video player component — direct child of mainContent for sticky to work */}
           <VideoPlayer />
 
           {/* course material component */}

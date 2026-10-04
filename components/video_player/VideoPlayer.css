@@ -46,18 +46,16 @@ video {
   right: 0;
 }
 
-/* video style for small screen */
-
-.sm-video-player-container {
-  position: sticky;
-  top: 10px;
+/* play icon sizing */
+.play-icon {
+  font-size: 100px;
 }
 
 /* video style for large screen */
 
 .video-lg {
   background: #000;
-  height: 162px;
+  height: 500px;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -77,4 +75,65 @@ video {
   top: 0;
   border: none;
   font-size: 15px;
+}
+
+/* --- Sticky wrapper: static by default (large screens) --- */
+
+.video-sticky-wrapper {
+  position: static;
+}
+
+/* --- Theatre toggle: visible by default --- */
+
+.theatre-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ========================================================
+   Small screens: sticky video + hide theatre toggle
+   ======================================================== */
+
+@media (max-width: 1024px) {
+  .video-sticky-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--main-bg-color, #f5f7fb);
+  }
+
+  .video-player-container {
+    margin: 0;
+  }
+
+  .video-lg {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .theatre-video {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Hide theatre toggle on small screens */
+  .theatre-toggle-btn {
+    display: none;
+  }
+
+  /* Smaller play icon on mobile */
+  .play-icon {
+    font-size: 50px;
+  }
+}
+
+/* ========================================================
+   Large screens: ensure static positioning
+   ======================================================== */
+
+@media (min-width: 1025px) {
+  .video-sticky-wrapper {
+    position: static;
+  }
 }

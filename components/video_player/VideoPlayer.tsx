@@ -9,7 +9,7 @@
 
 import './VideoPlayer.css'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { FaRegCirclePlay } from "react-icons/fa6";
 
@@ -35,24 +35,6 @@ const VideoPlayer = () => {
 
     const [overlay, setOverlay] = useState<boolean>(true)
 
-    const [windowWidth, setWindowWidth] = useState(0);
-
-    // handle widow resizing
-
-    useEffect(() => {
-        function handleResize() {
-            setWindowWidth(window.innerWidth);
-        };
-
-        handleResize();
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
-
 
     // toggle video to toggle from theatre to normal view versa vice
 
@@ -72,104 +54,69 @@ const VideoPlayer = () => {
     }
 
     return (
-        <div className="page-container">
-            {
-                // sticky video in small screens
-                windowWidth < 850 ?
-                    (
-                        <div className="sm-video-player-container">
-                            <div className='video-player-container'>
-                                <video
-                                    src="/file_example.mp4"
-                                    className={`${isTheatre ? 'theatre-video' : ''}`}
-                                    ref={videoRef}
-                                    controls={isPlaying}
-                                    style={{ height: `${windowWidth * 0.5}px` }}
-                                />
+        <>
+            <div className="video-sticky-wrapper">
+                <div className="page-container">
+                    <div
+                        className='video-player-container'
+                        style={{ width: '100%' }}
+                    >
+                        <video
+                            src="/file_example.mp4"
+                            className={`${isTheatre ? 'theatre-video' : 'video-lg'} `}
+                            ref={videoRef}
+                            controls={isPlaying}
+                        />
 
-                                {/* show overlay when page is rendered */}
+                        {/* show toggle btn in large screen */}
 
-                                {overlay
-                                    &&
-                                    (
-                                        <div className="video-overlay">
-                                            <button
-                                                className="video-overlay-btn"
-                                                onClick={playVideo}
-                                            >
-                                                <FaRegCirclePlay
-                                                    color='#fff'
-                                                    size={windowWidth > 768 ? 100 : 50}
-                                                />
-                                            </button>
-                                        </div>
-                                    )}
-                            </div>
-                        </div>
-                    )
-                    :
-                    (
-                        // normal video with theatre option for large screen
-                        <div
-                            className='video-player-container'
-                            style={{ width: '100%' }}
-                        >
-                            <video
-                                src="/file_example.mp4"
-                                className={`${isTheatre ? 'theatre-video' : 'video-lg'} `}
-                                ref={videoRef}
-                                controls={isPlaying}
-                                style={{ height: `500px` }}
-                            />
+                        {
+                            !overlay && (
+                                <button
+                                    className="theatre-toggle-btn"
+                                    onClick={
+                                        toggleVideo
+                                    }
+                                >
+                                    {
+                                        isTheatre ? <>
+                                            <MdOutlineFeaturedVideo /> normal view
+                                        </> :
+                                            <>
+                                                <TbTheater /> theatre view
+                                            </>
+                                    }
+                                </button>
+                            )
+                        }
 
-                            {/* show toggle btn in large screen */}
 
-                            {
-                                !overlay && (
+                        {/* show overlay when page is rendered */}
+
+                        {overlay
+                            &&
+                            (
+                                <div className="video-overlay">
                                     <button
-                                        onClick={
-                                            toggleVideo
-                                        }
+                                        className="video-overlay-btn"
+                                        onClick={playVideo}
                                     >
-                                        {
-                                            isTheatre ? <>
-                                                <MdOutlineFeaturedVideo /> normal view
-                                            </> :
-                                                <>
-                                                    <TbTheater /> theatre view
-                                                </>
-                                        }
+                                        <FaRegCirclePlay
+                                            color='#fff'
+                                            className="play-icon"
+                                        />
                                     </button>
-                                )
-                            }
+                                </div>
+                            )}
+                    </div>
+
+                    {/* curriculum icon component */}
 
 
-                            {/* show overlay when page is rendered */}
-
-                            {overlay
-                                &&
-                                (
-                                    <div className="video-overlay">
-                                        <button
-                                            className="video-overlay-btn"
-                                            onClick={playVideo}
-                                        >
-                                            <FaRegCirclePlay
-                                                color='#fff'
-                                                size={windowWidth > 768 ? 100 : 50}
-                                            />
-                                        </button>
-                                    </div>
-                                )}
-                        </div>
-                    )
-            }
-
-            {/* curriculum icon component */}
-
+                </div>
+            </div>
             <CurriculumIcon />
-
-        </div>
+        </>
     )
 }
 

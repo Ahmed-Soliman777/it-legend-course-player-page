@@ -15,7 +15,6 @@ import CourseTopics from "@/components/course_topics/CourseTopics";
 import Comments from "@/components/comments/Comments";
 
 import styles from "./page.module.css";
-import CurriculumIcon from "@/components/curriculum_icon/CurriculumIcon";
 
 const CourseLayout = () => {
   const [isWide, setIsWide] = useState<boolean>(false);
@@ -30,10 +29,6 @@ const CourseLayout = () => {
           isWide={isWide}
           onToggleWide={() => setIsWide((w) => !w)}
         />
-      </div>
-
-      <div className="page-container" style={{ background: 'rgba(0, 0, 0, 0.043)' }}>
-        <CurriculumIcon />
       </div>
 
       {/* course materials + comments — area: content */}

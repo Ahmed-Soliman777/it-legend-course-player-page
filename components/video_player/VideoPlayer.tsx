@@ -17,8 +17,6 @@ import { MdOutlineFeaturedVideo, MdFullscreen, MdFullscreenExit } from "react-ic
 
 import { RiSplitCellsHorizontal } from "react-icons/ri";
 
-import CurriculumIcon from '../curriculum_icon/CurriculumIcon';
-
 
 type VideoPlayerProps = {
     isWide: boolean;

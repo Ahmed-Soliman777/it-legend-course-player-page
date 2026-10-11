@@ -103,7 +103,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--main-bg-color, #f5f7fb);
+    background: #fff;
   }
 
   .video-player-container {

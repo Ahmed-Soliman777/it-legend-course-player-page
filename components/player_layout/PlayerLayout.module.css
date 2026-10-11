@@ -1,0 +1,75 @@
+/* player layout styles */
+
+/* mobile / tablet: single column, video sticks on top while scrolling */
+
+.layout {
+  display: block;
+}
+
+.video,
+.actions {
+  padding-inline: 24px;
+}
+
+.video {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #fff;
+  padding-block: 12px;
+}
+
+.actions {
+  padding-block: 4px 12px;
+}
+
+@media (max-width: 768px) {
+  .video,
+  .actions {
+    padding-inline: 16px;
+  }
+
+  .video {
+    padding-block: 8px;
+  }
+}
+
+/* desktop: video + content on the left, topics on the right */
+
+@media (min-width: 1025px) {
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 30%;
+    grid-template-rows: auto auto auto auto 1fr;
+    column-gap: 50px;
+    align-items: start;
+    grid-template-areas:
+      "video topics"
+      "actions topics"
+      "materials topics"
+      "comments topics"
+      ". topics";
+  }
+
+  /* wide view: video takes the full width, content moves below it */
+
+  .wide {
+    grid-template-areas:
+      "video video"
+      "actions actions"
+      "materials topics"
+      "comments topics"
+      ". topics";
+  }
+
+  .video {
+    grid-area: video;
+    position: static;
+    padding-top: 20px;
+  }
+
+  .actions { grid-area: actions; }
+  .materials { grid-area: materials; }
+  .comments { grid-area: comments; }
+  .topics { grid-area: topics; }
+}

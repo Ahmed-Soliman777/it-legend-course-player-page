@@ -12,8 +12,6 @@ import { FaComment, FaQuestion } from "react-icons/fa";
 
 import { MdLeaderboard } from "react-icons/md";
 
-import { HiOutlineBookOpen } from "react-icons/hi";
-
 import AskQuestion from "@/components/ask_question/AskQuestion";
 
 import Leaderboard from "@/components/leaderboard/Leaderboard";
@@ -57,15 +55,6 @@ const CurriculumIcon = () => {
 
     return (
         <>
-            <button
-                type="button"
-                title="Curriculum"
-                aria-label="Scroll to curriculum"
-                className="curriculum-icon"
-                onClick={() => scrollTo("curriculum-section")}
-            >
-                <HiOutlineBookOpen />
-            </button>
 
             <button
                 type="button"

@@ -27,6 +27,7 @@
 
 /* Scroll-margin so sticky video doesn't cover anchored sections */
 @media (max-width: 1024px) {
+
   :global(#curriculum-section),
   :global(#comments-section) {
     scroll-margin-top: 260px;

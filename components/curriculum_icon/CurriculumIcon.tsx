@@ -6,11 +6,13 @@
 */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { FaComment, FaQuestion } from "react-icons/fa";
 
 import { MdLeaderboard } from "react-icons/md";
+
+import { HiOutlineBookOpen } from "react-icons/hi";
 
 import AskQuestion from "@/components/ask_question/AskQuestion";
 
@@ -26,46 +28,85 @@ const CurriculumIcon = () => {
     const [isAskPopupOpen, setIsAskPopupOpen] = useState(false);
     const [isLeaderboardPopupOpen, setIsLeaderboardPopupOpen] = useState(false);
 
-    const [askQuestionValue, setAskQuestionValue] = useState("");
+    const [askQuestionValue, setAskQuestionValue] = useState<string>(() => {
+        if (typeof window !== "undefined") {
+            return sessionStorage.getItem("ask-question") || "";
+        }
+        return "";
+    });
 
 
-    // use Effects for renders
+    // smooth scroll helper
 
-    // set ask question session storage
-    useEffect(() => {
-        sessionStorage.setItem("ask-question", askQuestionValue);
-    }, [askQuestionValue]);
+    function scrollTo(id: string) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+        }
+    }
 
+
+    // handle successful question submit
+
+    function handleAskSubmit() {
+        setAskQuestionValue("");
+        sessionStorage.removeItem("ask-question");
+        setIsAskPopupOpen(false);
+    }
 
 
     return (
         <>
-            <span title="Add new comment" className="curriculum-icon">
-                <FaComment />
-            </span>
+            <button
+                type="button"
+                title="Curriculum"
+                aria-label="Scroll to curriculum"
+                className="curriculum-icon"
+                onClick={() => scrollTo("curriculum-section")}
+            >
+                <HiOutlineBookOpen />
+            </button>
 
-            <span
+            <button
+                type="button"
+                title="Comments"
+                aria-label="Scroll to comments"
+                className="curriculum-icon"
+                onClick={() => scrollTo("comments-section")}
+            >
+                <FaComment />
+            </button>
+
+            <button
+                type="button"
                 title="Ask a question"
+                aria-label="Open ask a question popup"
                 className="curriculum-icon"
                 onClick={() => setIsAskPopupOpen(true)}
             >
                 <FaQuestion />
-            </span>
+            </button>
 
-            <span
-                title="go to leaderboard"
+            <button
+                type="button"
+                title="Leaderboard"
+                aria-label="Open leaderboard popup"
                 className="curriculum-icon"
                 onClick={() => setIsLeaderboardPopupOpen(true)}
             >
                 <MdLeaderboard />
-            </span>
+            </button>
 
             {/* ask question pop up */}
             <AskQuestion
                 isOpen={isAskPopupOpen}
                 value={askQuestionValue}
-                onChange={setAskQuestionValue}
+                onChange={(v) => {
+                    setAskQuestionValue(v);
+                    sessionStorage.setItem("ask-question", v);
+                }}
                 onClose={() => setIsAskPopupOpen(false)}
+                onSubmit={handleAskSubmit}
             />
 
             {/* leaderboard pop up */}

@@ -55,7 +55,7 @@
     box-sizing: border-box;
 }
 
-.add-commment-btn {
+.add-comment-btn {
     border: none;
     border-radius: 9px;
     background: #008b09;
@@ -64,10 +64,6 @@
     font-weight: 600;
     cursor: pointer;
     width: fit-content;
-    -webkit-border-radius:;
-    -moz-border-radius:;
-    -ms-border-radius:;
-    -o-border-radius:;
 }
 
 @media (max-width: 640px) {

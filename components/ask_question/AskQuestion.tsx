@@ -1,7 +1,7 @@
 /**
  * @title ask question component
  * @description ask question pop up for make users add their inquiries about the course
- * @props { isOpen, value, onClose, onChange }
+ * @props { isOpen, value, onClose, onChange, onSubmit }
  */
 
 
@@ -11,10 +11,15 @@ import "./AskQuestion.css";
 
 import { AskQuestionProps } from "@/types";
 
-const AskQuestion = ({ isOpen, value, onClose, onChange }: AskQuestionProps) => {
+const AskQuestion = ({ isOpen, value, onClose, onChange, onSubmit }: AskQuestionProps) => {
 
     if (!isOpen) {
         return null;
+    }
+
+    function handleSubmit() {
+        if (!value.trim()) return;
+        onSubmit();
     }
 
     return (
@@ -43,7 +48,7 @@ const AskQuestion = ({ isOpen, value, onClose, onChange }: AskQuestionProps) => 
                     onChange={(event) => onChange(event.target.value)}
                 ></textarea>
 
-                <button className="ask-btn" onClick={onClose} type="button">
+                <button className="ask-btn" onClick={handleSubmit} type="button">
                     Submit
                 </button>
             </div>

@@ -10,42 +10,45 @@ import './Comments.css'
 
 import { CommmentsData } from '@/data'
 
+import { CommentsType } from '@/types'
+
 import Image from 'next/image'
 
-
-import { useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 
 const Comments = () => {
 
+    const [comments, setComments] = useState<CommentsType[]>(CommmentsData);
+    const [commentText, setCommentText] = useState<string>('');
 
-    const [windowWidth, setWindowWidth] = useState<number>(0);
 
-    useEffect(() => {
-        function handleResize() {
-            setWindowWidth(window.innerWidth);
+    function handleSubmit(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        if (!commentText.trim()) return;
+
+        const newComment: CommentsType = {
+            image: "/profile.jpg",
+            name: "You",
+            date: new Date().toISOString().slice(0, 10),
+            comment: commentText.trim(),
         };
 
-        handleResize();
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+        setComments((prev) => [...prev, newComment]);
+        setCommentText('');
+    }
 
 
     return (
-        <section className='comment-section'>
+        <section id="comments-section" className='comment-section'>
 
             {/* comment data */}
 
-            {CommmentsData.map((comment, i) => (
+            {comments.map((comment, i) => (
                 <div className="comment-container container" key={i}>
                     
                     <div className="image-container">
-                        <Image src='/profile.jpg' alt={comment.name} width={100} height={100} />
+                        <Image src={comment.image} alt={comment.name} width={100} height={100} />
                     </div>
 
                     <span>
@@ -60,15 +63,19 @@ const Comments = () => {
             {/* comment input */}
 
             <form
-                className="comment-input-container container">
+                className="comment-input-container container"
+                onSubmit={handleSubmit}>
                 <textarea
                     name="comment-area"
                     id="comment-text-area"
                     placeholder='write a comment'
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
                 />
                 <button
-                    className='add-commment-btn
-                '>
+                    type="submit"
+                    className='add-comment-btn'
+                >
                     Submit Review
                 </button>
             </form>

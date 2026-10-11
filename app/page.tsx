@@ -1,17 +1,12 @@
 /**
  * 
  * @description it legend player page
- * @components Header - Comments - CourseMaterials - CourseTopics - VideoPlayer
+ * @components Header - CourseLayout (VideoPlayer, CourseMaterials, CourseTopics, Comments)
  */
 
 
-import Comments from "@/components/comments/Comments";
-import CourseMaterials from "@/components/course_materials/CourseMaterials";
-import CourseTopics from "@/components/course_topics/CourseTopics";
 import Header from "@/components/header/Header";
-import VideoPlayer from "@/components/video_player/VideoPlayer";
-
-import styles from './page.module.css'
+import CourseLayout from "./CourseLayout";
 
 export default function Home() {
   return (
@@ -20,29 +15,7 @@ export default function Home() {
 
       <Header />
 
-      <div className={styles.it_player_video}>
-        <div className={styles.mainContent}>
-
-          {/* video player component — direct child of mainContent for sticky to work */}
-          <VideoPlayer />
-
-          {/* course material component */}
-          <CourseMaterials />
-
-
-          {/* course topics component */}
-          <div className={styles.smallTopics}>
-            <CourseTopics />
-          </div>
-
-          {/* comments component */}
-          <Comments />
-        </div>
-
-        <aside className={styles.largeTopics}>
-          <CourseTopics />
-        </aside>
-      </div>
+      <CourseLayout />
     </>
 
   );

@@ -5,14 +5,14 @@
   margin: 20px 0;
 }
 
-.theatre-video {
-  width: 100%;
-  height: 550px;
-}
+/* --- Video element: aspect-ratio instead of fixed height --- */
 
-video {
+.video-element {
   background: #000;
   width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 80vh;
+  display: block;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -24,6 +24,8 @@ video {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
+/* --- Overlay: centered play button --- */
 
 .video-overlay {
   position: absolute;
@@ -37,13 +39,18 @@ video {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .video-overlay-btn {
   background: transparent;
   border: none;
-  bottom: 0;
-  right: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* play icon sizing */
@@ -51,30 +58,34 @@ video {
   font-size: 100px;
 }
 
-/* video style for large screen */
+/* --- Controls row (wide + fullscreen buttons) --- */
 
-.video-lg {
-  background: #000;
-  height: 500px;
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-}
-
-.video-player-container button {
+.video-controls-row {
   position: absolute;
   z-index: 999;
-  left: 0;
-  top: 0;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.video-player-container .wide-toggle-btn,
+.video-player-container .fullscreen-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   border: none;
+  background: #000000aa;
+  color: #fff;
   font-size: 15px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.video-player-container .wide-toggle-btn:hover,
+.video-player-container .fullscreen-toggle-btn:hover {
+  background: #000000dd;
 }
 
 /* --- Sticky wrapper: static by default (large screens) --- */
@@ -83,16 +94,8 @@ video {
   position: static;
 }
 
-/* --- Theatre toggle: visible by default --- */
-
-.theatre-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
 /* ========================================================
-   Small screens: sticky video + hide theatre toggle
+   Small screens: sticky video + hide wide toggle
    ======================================================== */
 
 @media (max-width: 1024px) {
@@ -107,19 +110,9 @@ video {
     margin: 0;
   }
 
-  .video-lg {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
-  .theatre-video {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
-  /* Hide theatre toggle on small screens */
-  .theatre-toggle-btn {
-    display: none;
+  /* Hide wide toggle on small screens */
+  .wide-toggle-btn {
+    display: none !important;
   }
 
   /* Smaller play icon on mobile */
@@ -136,4 +129,20 @@ video {
   .video-sticky-wrapper {
     position: static;
   }
+}
+
+/* ========================================================
+   Fullscreen styles
+   ======================================================== */
+
+.video-player-container:fullscreen {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-player-container:fullscreen .video-element {
+  max-height: 100vh;
+  border-radius: 0;
 }

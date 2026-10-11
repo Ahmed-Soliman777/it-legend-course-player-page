@@ -1,40 +1,78 @@
+/* ========================================================
+   Small screens (<= 1024px): block layout so sticky video works.
+   The sticky element must be a direct child of a tall container,
+   NOT inside a grid item (which limits sticky to its grid area).
+   ======================================================== */
+
 .it_player_video {
-  max-width: 100%;
-  display: flex;
-  gap: 50px;
-  align-items: flex-start;
+  display: block;
 }
 
-.mainContent {
-  flex: 1;
-  min-width: 0;
+.videoArea {
+  /* no special styling on small screens — block child */
+}
+
+.contentArea {
+  /* block child */
 }
 
 .smallTopics {
-  display: none;
-}
-
-.largeTopics {
   display: block;
-  width: 30%;
-  flex-shrink: 0;
+  margin-top: 24px;
 }
 
-.sm_course_materials {
+.topicsArea {
   display: none;
 }
 
+/* Scroll-margin so sticky video doesn't cover anchored sections */
 @media (max-width: 1024px) {
+  :global(#curriculum-section),
+  :global(#comments-section) {
+    scroll-margin-top: 260px;
+  }
+}
+
+/* ========================================================
+   Desktop (>= 1025px): CSS grid with named areas.
+   Normal: video + content on the left, topics on the right.
+   Wide:   video spans both columns on top, then content + topics below.
+   ======================================================== */
+
+@media (min-width: 1025px) {
   .it_player_video {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 30%;
+    grid-template-areas:
+      "video topics"
+      "content topics";
+    gap: 0 50px;
+    align-items: start;
   }
 
-  .largeTopics {
-    display: none;
+  .it_player_video.wide {
+    grid-template-areas:
+      "video video"
+      "content topics";
+  }
+
+  .videoArea {
+    grid-area: video;
+    min-width: 0;
+  }
+
+  .contentArea {
+    grid-area: content;
+    min-width: 0;
   }
 
   .smallTopics {
+    display: none;
+  }
+
+  .topicsArea {
+    grid-area: topics;
     display: block;
-    margin-top: 24px;
+    min-width: 0;
   }
 }

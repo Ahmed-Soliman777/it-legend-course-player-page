@@ -2,16 +2,27 @@
 
 .curriculum-icon {
   color: var(--secondary-text-color);
-  padding: 8px 10px;
+  padding: 8px 8px;
   border: var(--secondary-text-color) 1px solid;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  font-size: inherit;
+  line-height: 1;
 }
 
-.curriculum-icon:nth-child(even){
-    margin: 0 5px;
+.curriculum-icon:nth-child(even) {
+  margin: 0 5px;
+}
+
+.curriculum-icon:hover {
+  color: var(--main-text-color);
+  border-color: var(--main-text-color);
 }

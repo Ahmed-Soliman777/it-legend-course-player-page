@@ -16,6 +16,7 @@ export type AskQuestionProps = {
   value: string;
   onClose: () => void;
   onChange: (value: string) => void;
+  onSubmit: () => void;
 };
 
 // course topics data

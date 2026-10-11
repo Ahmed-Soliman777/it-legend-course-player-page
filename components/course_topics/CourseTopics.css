@@ -25,6 +25,19 @@
   font-size: 0.75rem;
   font-weight: 700;
   box-shadow: 0 2px 8px #0000001f;
+  z-index: 0;
+}
+
+@media (max-width:425px) {
+  .progress-track::after {
+    left: 60%;
+  }
+}
+
+@media (min-width:426px) and (max-width:1024px) {
+  .progress-track::after {
+    left: 62.5%;
+  }
 }
 
 .progress-track::before {

@@ -26,6 +26,9 @@ components/
   - topic_card/          Individual course topic card
   - video_player/        Video lecture player
 
+  context/
+  - VideoContext.tsx     Video player state management
+
 public/                  Static assets and images
 
 Root Files:

@@ -17,6 +17,8 @@ import { MdOutlineFeaturedVideo, MdFullscreen, MdFullscreenExit } from "react-ic
 
 import { RiSplitCellsHorizontal } from "react-icons/ri";
 
+import { useVideo } from '@/context/VideoContext';
+
 
 type VideoPlayerProps = {
     isWide: boolean;
@@ -24,6 +26,9 @@ type VideoPlayerProps = {
 };
 
 const VideoPlayer = ({ isWide, onToggleWide }: VideoPlayerProps) => {
+
+    // pull the active video URL from global context
+    const { videoUrl } = useVideo();
 
     // video ref for video dom element property
 
@@ -38,6 +43,20 @@ const VideoPlayer = ({ isWide, onToggleWide }: VideoPlayerProps) => {
     const [overlay, setOverlay] = useState<boolean>(true)
 
     const [isFullscreen, setIsFullscreen] = useState<boolean>(false)
+
+
+    // reset player UI whenever the selected lesson changes
+
+    useEffect(() => {
+        if (!videoUrl) return;
+        // pause any in-progress playback
+        if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.load();
+        }
+        setIsPlaying(false);
+        setOverlay(true);
+    }, [videoUrl]);
 
 
     // sync fullscreen state with browser events
@@ -97,69 +116,77 @@ const VideoPlayer = ({ isWide, onToggleWide }: VideoPlayerProps) => {
 
     return (
         <div className="page-container">
-            <div
-                className='video-player-container'
-                ref={containerRef}
-                style={{ width: '100%' }}
-            >
-                <video
-                    src="/file_example.mp4"
-                    className="video-element"
-                    ref={videoRef}
-                    controls={isPlaying}
-                    playsInline
-                />
+            {/* fallback when no video URL is available */}
+            {!videoUrl ? (
+                <div className="video-fallback">
+                    <MdOutlineFeaturedVideo className="video-fallback-icon" />
+                    <p>Select a lesson to start watching</p>
+                </div>
+            ) : (
+                <div
+                    className='video-player-container'
+                    ref={containerRef}
+                    style={{ width: '100%' }}
+                >
+                    <video
+                        key={videoUrl}
+                        src={videoUrl}
+                        className="video-element"
+                        ref={videoRef}
+                        controls={isPlaying}
+                        playsInline
+                    />
+                    {/* show wide + fullscreen buttons after play */}
 
-                {/* show wide + fullscreen buttons after play */}
-
-                {
-                    !overlay && (
-                        <div className="video-controls-row">
-                            <button
-                                className="wide-toggle-btn"
-                                onClick={onToggleWide}
-                                aria-label={isWide ? 'Exit wide view' : 'Enter wide view'}
-                            >
-                                {
-                                    isWide ? <>
-                                        <MdOutlineFeaturedVideo /> normal view
-                                    </> :
-                                        <>
-                                            <RiSplitCellsHorizontal /> wide view
-                                        </>
-                                }
-                            </button>
-                            <button
-                                className="fullscreen-toggle-btn"
-                                onClick={toggleFullscreen}
-                                aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
-                            >
-                                {isFullscreen ? <MdFullscreenExit /> : <MdFullscreen />}
-                            </button>
-                        </div>
-                    )
-                }
+                    {
+                        !overlay && (
+                            <div className="video-controls-row">
+                                <button
+                                    className="wide-toggle-btn"
+                                    onClick={onToggleWide}
+                                    aria-label={isWide ? 'Exit wide view' : 'Enter wide view'}
+                                >
+                                    {
+                                        isWide ? <>
+                                            <MdOutlineFeaturedVideo /> normal view
+                                        </> :
+                                            <>
+                                                <RiSplitCellsHorizontal /> wide view
+                                            </>
+                                    }
+                                </button>
+                                <button
+                                    className="fullscreen-toggle-btn"
+                                    onClick={toggleFullscreen}
+                                    aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+                                >
+                                    {isFullscreen ? <MdFullscreenExit /> : <MdFullscreen />}
+                                </button>
+                            </div>
+                        )
+                    }
 
 
-                {/* show overlay when page is rendered */}
+                    {/* show overlay when page is rendered */}
 
-                {overlay
-                    &&
-                    (
-                        <div className="video-overlay">
-                            <button
-                                className="video-overlay-btn"
-                                onClick={playVideo}
-                                aria-label="Play video"
-                            >
-                                <FaRegCirclePlay
-                                    color='#fff'
-                                    className="play-icon"
-                                />
-                            </button>
-                        </div>
-                    )}
-            </div>
+                    {overlay
+                        &&
+                        (
+                            <div className="video-overlay">
+                                <button
+                                    className="video-overlay-btn"
+                                    onClick={playVideo}
+                                    aria-label="Play video"
+                                >
+                                    <FaRegCirclePlay
+                                        color='#fff'
+                                        className="play-icon"
+                                    />
+                                </button>
+                            </div>
+                        )}
+                </div>
+            )}
         </div>
     )
 }

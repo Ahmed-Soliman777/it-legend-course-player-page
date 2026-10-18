@@ -115,3 +115,29 @@
   font-size: 0.75rem;
   font-weight: 600;
 }
+
+/* ─── Clickable lesson items ─────────────────────────────── */
+
+.lesson-item {
+  cursor: pointer;
+  transition: background-color 0.15s ease, padding-left 0.15s ease;
+  border-radius: 4px;
+  padding-left: 6px;
+}
+
+.lesson-item:hover {
+  background-color: #f0f9ff;
+  padding-left: 10px;
+}
+
+.lesson-item--active {
+  background-color: #eff6ff;
+  border-left: 3px solid #2563eb;
+  padding-left: 10px;
+}
+
+.lesson-item--active .topic-label {
+  color: #2563eb;
+  font-weight: 600;
+}
+

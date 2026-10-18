@@ -25,6 +25,8 @@ export type CourseTopic = {
   topic: string;
   questions_no?: number;
   duration?: number;
+  isQuiz: boolean;
+  video?: string;
 };
 
 // course topics component props type

@@ -24,24 +24,37 @@ const CourseTopics = () => {
             <TopicCard
                 data={[
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+                        video: "/vid1.mp4"
                     },
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+                        video: "/vid2.mp4"
                     },
                     {
                         topic: "Introduction to IT Legend",
                         questions_no: 10,
-                        duration: 20
+                        duration: 20,
+                        isQuiz: true
                     },
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+
+                        video: "/vid3.mp4"
                     },
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+
+                        video: "/vid4.mp4"
                     },
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+                        video: "/vid5.mp4"
                     }
                 ]}
                 title="Course Topics"
@@ -52,24 +65,37 @@ const CourseTopics = () => {
             <TopicCard
                 data={[
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+                        video: "/vid1.mp4"
                     },
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+                        video: "/vid2.mp4"
                     },
                     {
                         topic: "Introduction to IT Legend",
                         questions_no: 10,
-                        duration: 20
+                        duration: 20,
+                        isQuiz: true
                     },
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+
+                        video: "/vid3.mp4"
                     },
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+
+                        video: "/vid4.mp4"
                     },
                     {
-                        topic: "Introduction to IT Legend"
+                        topic: "Introduction to IT Legend",
+                        isQuiz: false,
+                        video: "/vid5.mp4"
                     }
                 ]}
                 title="Course Topics"

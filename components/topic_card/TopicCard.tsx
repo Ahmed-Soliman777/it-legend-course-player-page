@@ -12,6 +12,8 @@ import { useEffect, useState } from 'react';
 
 import { ActiveExamType, CourseTopic, CourseTopicsProps } from '@/types';
 
+import { useVideo } from '@/context/VideoContext';
+
 import { FaLock } from "react-icons/fa";
 
 import { FaSheetPlastic } from "react-icons/fa6";
@@ -29,6 +31,10 @@ const TopicCard = ({
 
     const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
     const [activeExam, setActiveExam] = useState<ActiveExamType | null>(null)
+    const [activeTopic, setActiveTopic] = useState<number | null>(null)
+
+    // context: function to update the globally selected video URL
+    const { setVideoUrl } = useVideo();
 
 
     useEffect(() => {
@@ -62,6 +68,12 @@ const TopicCard = ({
             duration: topic.duration || 10,
             examKey: `exam-${index + 1}-${Math.random}`
         })
+    }
+
+    function handleLessonClick(topic: CourseTopic, index: number) {
+        if (!topic.video) return;
+        setVideoUrl(topic.video);
+        setActiveTopic(index);
     }
 
     function closeExam() {
@@ -112,16 +124,20 @@ const TopicCard = ({
                         data.map((topic, i) => (
                             <li
                                 key={i}
+                                className={`
+                                    ${!topic.isQuiz && topic.video ? 'lesson-item' : ''}
+                                    ${activeTopic === i ? 'lesson-item--active' : ''}
+                                `}
+                                onClick={() => !topic.isQuiz && handleLessonClick(topic, i)}
                             >
                                 <span className="topic-label">
                                     <FaSheetPlastic />
                                     {topic.topic}
                                 </span>
                                 {
-                                    i !== 2 ?
+                                    !topic.isQuiz ?
                                         (
                                             <>
-
                                                 <FaLock />
                                             </>
                                         )

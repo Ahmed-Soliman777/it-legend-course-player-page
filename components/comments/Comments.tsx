@@ -46,7 +46,7 @@ const Comments = () => {
 
             {comments.map((comment, i) => (
                 <div className="comment-container container" key={i}>
-                    
+
                     <div className="image-container">
                         <Image src={comment.image} alt={comment.name} width={100} height={100} />
                     </div>
@@ -73,7 +73,6 @@ const Comments = () => {
                     onChange={(e) => setCommentText(e.target.value)}
                 />
                 <button
-                    type="submit"
                     className='add-comment-btn'
                 >
                     Submit Review
